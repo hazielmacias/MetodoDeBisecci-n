@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método de Bisección - FI UNAM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container"></div>
+            <h1>🔧 Método de Bisección</h1>
+            <div class="subtitle">Facultad de Ingeniería - UNAM</div>
+        </div>
+
+        <div class="content">
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="function">📊 Función f(x):</label>
+                    <input type="text" id="function" placeholder="Ejemplo: x^3 - x - 2" value="x^3 - x - 2">
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="a">📍 Límite inferior (a):</label>
+                        <input type="number" id="a" step="any" placeholder="-10" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="b">📍 Límite superior (b):</label>
+                        <input type="number" id="b" step="any" placeholder="10" value="2">
+                    </div>
+                    <div class="input-group">
+                        <label for="tolerance">🎯 Tolerancia:</label>
+                        <input type="number" id="tolerance" step="any" placeholder="0.0001" value="0.0001">
+                    </div>
+                    <div class="input-group">
+                        <label for="maxIter">🔄 Máx. Iteraciones:</label>
+                        <input type="number" id="maxIter" placeholder="100" value="100">
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button class="btn-calculate" onclick="calculate()">Calcular Automático</button>
+                    <button class="btn-step" onclick="stepByStep()">Paso a Paso</button>
+                    <button class="btn-reset" onclick="reset()">Limpiar</button>
+                </div>
+
+                <div id="errorMessage" class="error-message"></div>
+            </div>
+
+            <div id="resultBox" class="result-box"></div>
+
+            <div class="stats-container" id="statsContainer" style="display: none;">
+                <div class="stat-box">
+                    <div class="stat-value" id="rootValue">-</div>
+                    <div class="stat-label">Raíz Aproximada</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="iterValue">-</div>
+                    <div class="stat-label">Iteraciones</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="errorValue">-</div>
+                    <div class="stat-label">Error Final</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="fValue">-</div>
+                    <div class="stat-label">f(raíz)</div>
+                </div>
+            </div>
+
+            <div class="results-container">
+                <div class="table-section">
+                    <h2 class="section-title">📋 Tabla de Iteraciones</h2>
+                    <div id="tableContainer">
+                        <table id="resultsTable">
+                            <thead>
+                                <tr>
+                                    <th>Iteración</th>
+                                    <th>a</th>
+                                    <th>b</th>
+                                    <th>c</th>
+                                    <th>f(a)·f(c)</th>
+                                    <th>f(c)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="graph-section">
+                    <h2 class="section-title">📈 Gráfica de la Función</h2>
+                    <canvas id="graph"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Facultad de Ingeniería UNAM | Análisis Numérico | Mercado Macías Haziel Alejandro
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
